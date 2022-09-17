@@ -1,28 +1,35 @@
 -- examples on join on 3 tables
 
--- extra info on employees - SQL/92
-select first_name, last_name, name as department, city
-from employee join department using (department_id)
-	join location using (location_id);
+-- join using
+select e.first_name, e.last_name , d.name as "department name", l.city
+from employee e join department d using (department_id)
+	join location l using (location_id);
 
--- extra info on employees - classic
-select first_name, last_name, name as department, city
+-- join on
+select e.first_name, e.last_name, l.city
+from employee e join department d on e.department_id = d.department_id
+	join location l on d.location_id = l.location_id
+where d.name = 'IT';
+
+-- classic
+select e.first_name, e.last_name, d.name as "department name", l.city
 from employee e, department d, location l
-where d.department_id = e.department_id and d.location_id = l.location_id;
+where d.department_id = e.department_id
+	and d.location_id = l.location_id;
 
 -- employees based at Toronto
-select e.first_name, e.last_name, d.name as department
+select e.first_name, e.last_name, d.name as "department name"
 from employee e join department d using (department_id)
 	join location l using (location_id)
 where l.city = 'Toronto';
 
--- extra info on executive employees
-select first_name, last_name, city
-from employee join department using (department_id)
-	join location using (location_id)
-where name = 'Executive';
+-- executive employees
+select e.first_name, e.last_name, l.city
+from employee e join department d using (department_id)
+	join location l using (location_id)
+where d.name = 'Executive';
 
--- extra info on executive employees (classic)
+-- executive employees (classic)
 select e.first_name, e.last_name, l.city
 from employee e, department d, location l
 where d.department_id = e.department_id

@@ -1,30 +1,30 @@
 -- left/right outer join - from "many" perspective
 
 -- Kimberely is an employee
-select first_name, last_name
+select employee_id, first_name, last_name
 from employee
 where last_name like 'Gr%';
 
 -- the inner join skips Kimberely
-select first_name, last_name, name as department
-from employee inner join department
-using (department_id)
+select e.employee_id, first_name, last_name, d.name as "department name"
+from employee e join department d
+on e.department_id = d.department_id
 where last_name like 'Gr%';
 
 -- left outer join
-select first_name, last_name, name
-from employee left outer join department
+select e.first_name, e.last_name, d.name as "department name"
+from employee e left outer join department d
 using (department_id)
-where last_name like 'Gr%';
+where e.last_name like 'Gr%';
 
 -- rewritten as right outer join
-select first_name, last_name, name
-from department right outer join employee
+select e.first_name, e.last_name, d.name as "department name"
+from department d right outer join employee e
 using (department_id)
-where last_name like 'Gr%';
+where e.last_name like 'Gr%';
 
 -- "left" / "right" imply "outer"
-select first_name, name
-from employee left join department
+select e.first_name, e.last_name, d.name as "department name"
+from employee e left join department d
 using (department_id)
-where last_name = 'Grant';
+where e.last_name = 'Grant';
