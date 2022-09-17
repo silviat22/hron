@@ -10,12 +10,12 @@ insert into service (service_id, name, location_id) values
 
 -- multiline insert
 insert into service (service_id, name, location_id) values
-	(21, 'Old Gondor Messingup', 1200),
-	(22, 'Rohan Leather Finitures', 1300);
+	(22, 'Old Gondor Messingup', 1200),
+	(23, 'Rohan Leather Finitures', 1300);
 
 -- column with default value (nullable or other) could be skipped
 insert into service (service_id, name) values
-    (12, 'Kerr & Reetch Associates');
+    (32, 'Kerr & Reetch Associates');
 
 -- auto-incremented value for pk
 insert into service (name) values ('Multiple Oz');
@@ -25,4 +25,4 @@ insert into service (name) values (DEFAULT);
 
 -- insert relying on column definition on table
 insert into service values
-    (13, 'Rainydays Carwash', null);
+    (33, 'Rainydays Carwash', null);

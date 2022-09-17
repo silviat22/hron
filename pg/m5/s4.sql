@@ -16,3 +16,18 @@ where service_id > 3;
 -- !!! here another table references some of these rows !!!
 -- !!! the operation won't succeed on them !!!
 delete from service;
+
+-- spoiler: how to drop a table, if it exists
+drop table if exists x;
+
+-- spoiler: how to create a table, if it does not exists
+create table x (
+	a integer primary key
+);
+
+select * from x;
+
+insert into x (a) values
+	(42), (4), (2), (22);
+
+delete from x;
