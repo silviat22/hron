@@ -5,6 +5,8 @@
 -- hron=> \i setup.sql
 
 -- cleanup
+drop table if exists team_employee;
+drop table if exists team;
 drop table if exists car_service;
 drop table if exists service cascade;
 drop table if exists car;
@@ -92,7 +94,6 @@ create table location(
 );
 
 alter sequence location_location_id_seq restart with 1000 increment by 100;
-
 
 do $$ declare
     v_it country.country_id%type;
@@ -742,6 +743,37 @@ begin;
     call set_department_manager('Nancy', 'Greenberg', 'Finance');
     call set_department_manager('Shelley', 'Higgins', 'Accounting');
 commit;
+
+-- simple table in many-to-many releation with employee
+create table team(
+    team_id serial primary key,
+    name varchar(20) unique not null
+);
+
+begin;
+    insert into team (name) values ('Red');
+    insert into team (name) values ('Green');
+    insert into team (name) values ('Blue');
+commit;
+
+
+-- simple many to many relation between team and employee
+create table team_employee(
+    team_id integer,
+    employee_id integer,
+
+    primary key (team_id, employee_id),
+    constraint team_employee_team_fk foreign key (team_id) references team (team_id),
+    constraint team_employee_employee_fk foreign key (employee_id) references employee (employee_id)
+);
+
+begin;
+    insert into team_employee (team_id, employee_id) values
+        (1, 103), (1, 107), (1, 111), (1, 118), (1, 123), (1, 125), (1, 133), (1, 153),
+        (2, 105), (2, 107), (2, 121), (2, 122), (2, 123), (2, 128), (2, 135), (2, 156),
+        (3, 104), (3, 109), (3, 111), (3, 120), (3, 123), (3, 127), (3, 139), (3, 156);
+commit;
+
 
 -- "one" car for one employee, "many" cars seviced by many services
 create table car(
