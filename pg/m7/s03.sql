@@ -16,6 +16,6 @@ begin
     raise log 'a log message is seldom showed';         -- usually disabled
     raise notice 'a notice';
     raise warning 'a warning';
-    raise exception 'an exception!';
-    raise notice 'hello';                               -- you won't see this!
+--    raise exception 'an exception!';
+--    raise notice 'hello';
 end $$;
