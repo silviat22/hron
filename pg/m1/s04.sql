@@ -26,7 +26,7 @@ select title, min_salary, min_salary + 200 as "option 1", min_salary + (min_sala
 from job;
 
 -- 'no table' select
-select current_date, sqrt(25), 5/2;
+select current_date, sqrt(25) as "squared root", 5/2 as "integer division";
 
 -- concatenation by operator ||
 select region_id || ': ' || country_id as "the countries"
@@ -41,10 +41,12 @@ select first_name, last_name
 from employee
 limit 10;
 
+-- second page
 select first_name, last_name
 from employee
 offset 10 limit 10;
 
+-- eleventh page
 select first_name, last_name
 from employee
 limit 10 offset 100;
