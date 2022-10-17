@@ -31,10 +31,10 @@ where employee_id in (
 
 -- subquery in select - group by - having + another one in select - from
 -- step 1: average salaries for each department
-select round(avg(salary))
+select round(avg(salary)) as "avg_sal"
 from employee
 group by department_id
-order by 1 desc;
+order by avg_sal desc;
 
 -- step 2: highest salary among the average salary for each department
 select round(max(tmp.avg_sal)) from (
@@ -43,14 +43,14 @@ select round(max(tmp.avg_sal)) from (
 	group by department_id) tmp;
 
 -- average salaries for each department (no null), excluding the topmost one
-select department_id, round(avg(salary))
+select department_id, round(avg(salary)) as "avg_sal"
 from employee
 group by department_id having avg(salary) < (select max(x.sal) from (
 	select avg(salary) sal
 	from employee
 	group by department_id) x
     where department_id is not null)
-order by 2 desc;
+order by avg_sal desc;
 
 -- subquery in select - from - join
 -- how many countries for each region
@@ -68,4 +68,4 @@ where employee_id in (
     select distinct manager_id
     from employee
     where manager_id is not null)
-order by 2;
+order by last_name;
