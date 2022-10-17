@@ -1,13 +1,13 @@
 -- examples on order by
 
-select *
+select first_name, last_name, salary 
 from employee
 order by last_name, first_name;
 
--- sorting in natural order
-select *
+-- sorting in natural "ascending" order
+select first_name, last_name, salary
 from employee
-order by salary asc;
+order by salary;
 
 -- descending, limited
 select first_name, last_name, salary
