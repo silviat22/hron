@@ -1,8 +1,8 @@
--- example on procedures
+-- examples on procedures
 
-create or replace procedure get_salary(
+create or replace procedure get_employee_salary(
     p_id in employee.employee_id%type,
-    p_salary out employee.salary%type)
+    p_salary inout employee.salary%type)
 language plpgsql as $$
 begin
     select salary
@@ -15,12 +15,37 @@ declare
     v_id constant int := 107;
     v_salary numeric;
 begin
-    call get_salary(v_id, v_salary);
+    call get_employee_salary(v_id, v_salary);
 
     raise notice 'Salary for % is %', v_id, v_salary;
 end $$;
 
-drop procedure if exists get_salary;
+drop procedure if exists get_employee_salary;
+
+--
+create or replace procedure get_employee_name(
+    p_id in employee.employee_id%type,
+    p_first out employee.first_name%type,
+    p_last out employee.last_name%type)
+language plpgsql as $$
+begin
+    select first_name, last_name
+    into p_first, p_last from employee
+    where employee_id = p_id;
+end $$;
+
+do $$
+declare
+    v_id constant int := 107;
+    v_first varchar;
+    v_last varchar;
+begin
+    call get_employee_name(v_id, v_first, v_last);
+
+    raise notice 'Employee % is % %', v_id, v_first, v_last;
+end $$;
+
+drop procedure if exists get_employee_name;
 
 -- a more interesting procedure
 create or replace procedure new_department(
