@@ -2,7 +2,8 @@
 
 -- join using
 select r.name as region, c.name as country
-from region r join country c using (region_id)
+from region r join country c
+    using (region_id)
 where r.name = 'Europe'
 order by country;
 

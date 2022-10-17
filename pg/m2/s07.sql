@@ -5,7 +5,7 @@ select title as info, 'job' as source
 from job
 where title like 'A%';
 
-select name, 'department'
+select name, 'department' as source
 from department
 where name like 'A%';
 
@@ -18,4 +18,3 @@ union
     from department
     where name like 'A%'
 order by info;
-
