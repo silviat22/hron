@@ -4,7 +4,8 @@ select d.name as "Department", j.title as "Job Title"
 from department d join employee e using (department_id)
     join job j using (job_id)
 group by d.name, j.title
-having d.name like '%ing';
+having d.name like '%ing'
+order by d.name;
 
 -- get employees with a salary less than 8000
 -- group them by manager id

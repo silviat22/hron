@@ -19,7 +19,8 @@ from employee;
 select department_id, round(avg(salary)) as avg_sal
 from employee
 group by department_id
-order by avg_sal desc;
+order by avg_sal desc
+limit 3;
 
 -- max salary for employees by department, from top downward
 select department_id, max(salary) as sum_salary
@@ -30,7 +31,7 @@ order by sum_salary desc;
 -- same, but showing department name in result set
 select d.name, max(e.salary) as sum_salary
 from employee e join department d
-using (department_id)
+	using (department_id)
 group by d.name
 order by sum_salary desc;
 
@@ -43,6 +44,8 @@ order by avg_sal desc;
 
 -- average salary for employees hired from 2020 on, grouped by department
 select d.name, round(avg(e.salary)) as avg_sal
-from employee e join department d using (department_id)
+from employee e join department d
+	using (department_id)
 where hired >= '2020-01-01'
 group by d.name;
+

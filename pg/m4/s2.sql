@@ -11,7 +11,7 @@ from employee;
 
 -- max, min
 select max(salary) as "Max salary", min(salary) as "Min salary",
-	round(avg(salary)) as "Average salary"
+	round(avg(salary), -2) as "Average salary"
 from employee;
 
 select max(hired) "Most recent hire" , min(hired) "Earliest hire"
@@ -24,10 +24,6 @@ where salary = (
 	select min(salary)
 	from employee
 );
-
--- min, max on dates
-select min(hired), max(hired)
-from employee;
 
 -- min, max on strings
 select min(first_name), max(last_name)
