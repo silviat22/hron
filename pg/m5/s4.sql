@@ -6,7 +6,7 @@ from service;
 
 -- delete a single row, if exists
 delete from service
-where service_id = 5;
+where service_id = 23;
 
 -- multiline delete - be extra careful with it!
 delete from service
@@ -25,9 +25,13 @@ create table x (
 	a integer primary key
 );
 
-select * from x;
+select *
+from x;
 
-insert into x (a) values
-	(42), (4), (2), (22);
+insert into x (a) values (42), (4), (2), (22);
+
+update x
+set a = 18
+where a = 2;
 
 delete from x;
