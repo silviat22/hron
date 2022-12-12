@@ -3,9 +3,9 @@
 -- join-using, handier
 select r.name as "region name", c.name as "country name" 
 from region r join country c
-    using (region_id)
+	using (region_id)
 where r.name = 'Europe'
-order by r.name, c.name;
+order by c.name;
 
 -- join-on, more flexible
 select r.name as "region name", c.name as "country name"
