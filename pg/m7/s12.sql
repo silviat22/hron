@@ -8,6 +8,8 @@ begin
     for v_employee in
         select first_name, last_name 
         from employee
+        where last_name like 'L%'
+        order by last_name
     loop 
         raise notice '% %', v_employee.first_name, v_employee.last_name;
     end loop;
@@ -22,6 +24,8 @@ begin
     for v_first_name, v_last_name in
         select first_name, last_name 
         from employee
+        where last_name like 'L%'
+        order by last_name
     loop 
         raise notice '% %', v_first_name, v_last_name;
     end loop;
