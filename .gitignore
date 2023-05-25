@@ -1,5 +1,6 @@
 /.settings/
 desktop.ini
 /.dbeaver/
+/.vscode/
 *.jar
 *.db
