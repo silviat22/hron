@@ -1,20 +1,21 @@
 -- examples on comparison operators
 
--- that one
+-- equality comparison to numeric value
 select *
 from region
 where region_id = 1;
 
+-- equality comparison to string
 select *
 from region
 where name = 'Asia';
 
--- the other ones
+-- non-equality comparison
 select *
 from region
 where region_id != 2;
 
--- the other ones, alternative notation
+-- non-equality comparison, alternative notation
 select *
 from region
 where region_id <> 2;
@@ -24,28 +25,30 @@ select *
 from region
 where region_id < 3;
 
+-- less or equal (to string)
 select *
 from region
 where name <= 'Asia';
 
--- less or equal to
+-- less or equal (to numeric)
 select *
 from region
 where region_id <= 3;
 
--- simple pattern matching
+-- simple pattern matching (case sensitive)
 select first_name, last_name
 from employee
 where last_name like '_ull%';
 
-select first_name, last_name
-from employee
-where last_name like 'B%';
-
--- case insensitive pattern matching
+-- simple pattern matching (case insensitive)
 select first_name, last_name
 from employee
 where last_name ilike 'b%';
+
+-- like is standard SQL, ilike is a PG extension
+select first_name, last_name
+from employee
+where last_name like 'B%';
 
 select first_name, last_name
 from employee
