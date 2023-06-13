@@ -14,7 +14,7 @@ where commission is not null
 -- !!! WRONG !!! check null
 select employee_id, first_name, last_name, commission
 from employee
-where commission = null
+where commission = null -- uguale è confronto non assegnamento
 	and last_name = 'King';
 
 -- !!! WRONG !!!
@@ -27,7 +27,7 @@ where commission != null
 select first_name, last_name, salary, commission,
 	salary * commission as "quota"
 from employee
-where last_name = 'King';
+where last_name = 'King'; -- per chi non ha commission, uscirà null
 
 -- coalesce: if commission is null use 0 instead
 select first_name, last_name, salary, commission,

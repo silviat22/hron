@@ -1,3 +1,5 @@
+--lo script crea la tabella, su cui noi lavoriamo da s0x.sql...
+
 -- precondition: user hron should exist, see hron.sql
 alter session set current_schema = hron;
 

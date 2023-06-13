@@ -4,6 +4,13 @@
 select *
 from service;
 
+update service set name =  'Inspired Glass'
+where service_id = 1;
+update service set name =  'Faith Auto Repair'
+where service_id = 2;
+update service set name =  'Happy Brake'
+where service_id = 3;
+
 -- delete a single row, if exists
 delete from service
 where service_id = 23;

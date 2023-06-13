@@ -45,7 +45,7 @@ order by avg_sal desc;
 -- average salary for employees hired from 2020 on, grouped by department
 select d.name, round(avg(e.salary)) as avg_sal
 from employee e join department d
-	using (department_id)
+	using (department_id) -- join per poter leggere il nome del dip
 where hired >= '2020-01-01'
 group by d.name;
 

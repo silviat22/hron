@@ -28,7 +28,7 @@ where region_id < 3;
 -- less or equal (to string)
 select *
 from region
-where name <= 'Asia';
+where name <= 'Asia'; -- controllo alfabetico sulle stringhe e date
 
 -- less or equal (to numeric)
 select *
@@ -43,7 +43,7 @@ where last_name like '_ull%';
 -- simple pattern matching (case insensitive)
 select first_name, last_name
 from employee
-where last_name ilike 'b%';
+where last_name ilike 'b%'; -- ilike significa insensitive like, non dà importanza alle maiuscole/minuscole
 
 -- like is standard SQL, ilike is a PG extension
 select first_name, last_name
@@ -52,7 +52,7 @@ where last_name like 'B%';
 
 select first_name, last_name
 from employee
-where last_name like '__ll%';
+where last_name like '__ll%'; -- 2 underscore all'inizio: solo 2 caratteri prima di ll...
 
 select first_name, last_name
 from employee
@@ -64,7 +64,11 @@ where last_name like '___';
 
 select last_name
 from employee
-where last_name ilike 'sul%';
+where last_name ilike 'sul%'; -- ilike può essere o non essere la lettera minuscola o maiuscola
+
+select first_name, last_name
+from employee
+where first_name ilike '%tr%' OR last_name ilike '%ll';
 
 -- interval check by BETWEEN
 select *
@@ -90,17 +94,17 @@ where region_id not in (2, 4);
 
 select *
 from region
-where region_id in (4, 2);
+where region_id in (4, 2); -- l'ordine non è significativo
 
 -- case sensitive!
 select *
 from region
-where name in ('Europe', 'asia');
+where name in ('Europe', 'asia'); -- asia non lo prende perché scritto minuscolo
 
 -- beware of null
 select *
 from region
-where region_id not in (2, 3, null);
+where region_id not in (2, 3, null); -- il null spacca tutto, non risulta nulla
 
 select *
 from region
@@ -123,7 +127,7 @@ where commission in (0.10, 0.15);
 -- this does not select anything!
 select *
 from employee
-where commission in (null);
+where commission in (null); -- spacca tutto per via dell'=
 
 -- "is null" is the only way to check it
 select *

@@ -37,7 +37,7 @@ select sum(salary)
 from employee
 where department_id = 5;
 
--- average
+-- average 2 è n° di cifre decimali
 select round(avg(salary), 2) as average, round(avg(distinct salary), 2) as "average no duplicates"
 from employee
 where department_id = 5;

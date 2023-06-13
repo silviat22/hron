@@ -1,0 +1,15 @@
+
+
+
+begin;
+select * from service;
+insert into service (name, location_id) values
+('221 Baker Street Bar', 2500),
+('Cambridge Bar', 3100);
+select * from service;
+update service set name = '222 Baker Street Bar' where name = '221 Baker Street Bar';
+select * from service;
+delete from service where name = 'Cambridge Bar';
+select * from service;
+rollback;
+select * from service;

@@ -11,7 +11,7 @@ from employee e join department d
     on e.department_id = d.department_id
 where last_name like 'Gr%';
 
--- left outer join
+-- left outer join -- mantenere dati tabella sx(employee)
 select e.first_name, e.last_name, d.name as "department name"
 from employee e left outer join department d
     using (department_id)

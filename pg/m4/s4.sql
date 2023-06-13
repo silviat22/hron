@@ -13,7 +13,7 @@ order by d.name;
 -- and order the result by the the second column, descending
 select manager_id, round(avg(salary)) as avg_sal
 from employee
-where salary < 8000
+where salary < 8000 -- 1° filtro sulla tabella originale
 group by manager_id
-having avg(salary) > 6000
+having avg(salary) > 6000 -- 2° filtro sul result set
 order by avg_sal desc;

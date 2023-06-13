@@ -1,0 +1,12 @@
+create table booking (
+    person_id integer,
+    place_id integer,
+    reservation date,
+
+    primary key (person_id, place_id, reservation),
+    foreign key (person_id) references person (person_id),
+    foreign key (place_id) references place (place_id)
+);
+
+insert into booking (person_id, place_id, reservation) values (1, 1, current_date); 
+insert into booking (person_id, place_id, reservation) values (2, 2, current_date)

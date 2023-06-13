@@ -834,7 +834,7 @@ end $$;
 -- "many" services taking cares of many cars, many services could share one location
 create table service(
     service_id serial primary key,
-    name varchar(40),
+    name varchar(40), --accetta i null
     location_id integer,
 
     constraint service_location_fk foreign key (location_id) references location (location_id)

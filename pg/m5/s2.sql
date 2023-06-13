@@ -4,7 +4,7 @@
 select *
 from service;
 
--- plain insert
+-- plain insert -- 20 è primary key, meglio non inserirla così sql genera automaticamente e si evitano sovrapposizioni con codici scritti da altri
 insert into service (service_id, name, location_id) values
     (20, 'Mirdor Shifty Solutions', 1100);
 

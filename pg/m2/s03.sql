@@ -15,10 +15,10 @@ where r.name = 'Americas'
 order by c.name;
 
 -- natural join
-select e.first_name, e.last_name, j.title 
-from employee e natural join job j
+select e.first_name, e.last_name, j.title -- job_id FK
+from employee e natural join job j -- sql sa come unire le 2 tabelle
 where first_name like 'A%';
 
 -- here a natural join does NOT work!
-select r.name, c.name
+select r.name, c.name -- stesso nome non permette natural join
 from region r natural join country c;

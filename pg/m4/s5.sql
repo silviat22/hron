@@ -20,11 +20,19 @@ where employee_id = (
 	from employee
 	where first_name = 'John' and last_name = 'Chen');
 
+-- self join
+select m.employee_id, m.first_name, m.last_name, m.salary
+from employee e join employee m -- m=tabella manager
+-- join on perché PK e FK hanno nomi diversi
+on e.manager_id = m.employee_id -- (FK manager id, PK employee id?)
+where e.first_name = 'John' and e.last_name = 'Chen';
+
+
 -- a safer version select - where, using "in" and checking for null
 -- who are the manager of employees having last name starting with 'K' (null not included)
 select first_name, last_name
 from employee
-where employee_id in (
+where employee_id in ( -- meglio in se il result set è più corposo
 	select manager_id
 	from employee
 	where last_name like 'K%' and manager_id is not null);

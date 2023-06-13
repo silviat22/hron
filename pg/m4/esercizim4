@@ -1,0 +1,46 @@
+
+select max(salary) as "Max salary", min(salary) as "Min salary", sum(salary) as "Tot salary", round(avg(salary), 2) as "Average salary"
+from employee;
+
+select job_id, max(salary) as "Max salary", min(salary) as "Min salary", sum(salary) as "Tot salary", round(avg(salary), 2) as "Average salary"
+from employee
+group by job_id
+order by job_id;
+
+select job_id, count(*) -- meglio asterisco che nome tabella (* per colonne)
+from employee
+group by job_id
+order by 1; -- 1 = 1a colonna che appare nella select; meglio usare alias
+
+select j.title as "Job title", count(*)
+from employee e join job j
+using (job_id)
+group by j.title
+having j.title = 'Programmer';
+-- where job_id = 15 -- 15 numero non stringa
+-- group by job_id;
+
+
+
+
+-- select job_id, first_name, last_name
+
+select manager_id, min(salary) as "Min salary"
+from employee
+where manager_id is not null 
+group by manager_id
+having min(salary) >= 6000 -- il contenuto del where si può mettere anche qui nell'having
+order by manager_id;
+
+
+-- nuovo
+select employee_id, first_name, last_ last_name
+from employee
+where salary = 9000 and manager_id = 102;
+-- nuovo + aggiunta
+select manager_id, min(salary) as "Min salary"
+from employee
+where manager_id is not null and first_name != 'Alexander'
+group by manager_id
+having min(salary) >= 6000
+order by manager_id;
